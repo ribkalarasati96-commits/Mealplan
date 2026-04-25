@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meal Plan Mei–Desember 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--green:#2d6a4f;--gl:#52b788;--gp:#d8f3dc;--orange:#e76f51;--gold:#e9c46a;--bg:#f4f1eb;--border:#e5e7eb;--muted:#6b7280;--text:#1a1a2e;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);}
+header{background:var(--green);color:#fff;padding:20px 16px;text-align:center;}
+header h1{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:900;}
+header p{font-size:.82rem;opacity:.85;margin-top:4px;}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px;}
+.badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:4px 12px;font-size:.72rem;font-weight:600;}
+.stats{display:flex;justify-content:space-around;background:var(--gl);padding:10px 8px;}
+.stat{text-align:center;color:#fff;}
+.stat-num{font-size:1rem;font-weight:700;}
+.stat-lbl{font-size:.62rem;opacity:.9;}
+.phase-wrap{background:#fff;border-bottom:1px solid var(--border);padding:12px 12px 8px;}
+.pscroll{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;}
+.pscroll::-webkit-scrollbar{display:none;}
+.pbtn{flex-shrink:0;padding:7px 16px;border-radius:20px;border:2px solid var(--border);background:#fff;font-size:.77rem;font-weight:600;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;color:var(--text);}
+.pbtn.act{background:var(--green);color:#fff;border-color:var(--green);}
+.day-wrap{background:#fff;border-bottom:1px solid var(--border);padding:10px 12px;}
+.dlbl{font-size:.67rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;}
+.dscroll{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;}
+.dscroll::-webkit-scrollbar{display:none;}
+.dbtn{flex-shrink:0;width:36px;height:36px;border-radius:50%;border:2px solid var(--border);background:#fff;font-size:.74rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;color:var(--text);}
+.dbtn.act{background:var(--green);color:#fff;border-color:var(--green);}
+.content{padding:14px;max-width:680px;margin:0 auto;}
+.date-hdr{background:linear-gradient(135deg,var(--green),var(--gl));color:#fff;border-radius:14px;padding:16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.date-hdr h2{font-family:'Playfair Display',serif;font-size:1.05rem;}
+.dsub{font-size:.72rem;opacity:.85;margin-top:3px;}
+.ccal{background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.35);border-radius:10px;padding:6px 12px;text-align:center;flex-shrink:0;}
+.ccal .n{font-size:1.05rem;font-weight:700;}
+.ccal .l{font-size:.59rem;opacity:.9;}
+.pinfo{border-radius:12px;padding:12px 14px;margin-bottom:12px;font-size:.81rem;color:#fff;}
+.pinfo h3{font-weight:700;margin-bottom:5px;font-size:.88rem;}
+.card{background:#fff;border-radius:14px;border:1px solid var(--border);margin-bottom:12px;overflow:hidden;}
+.chdr{padding:12px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);}
+.cico{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.ctit{font-weight:700;font-size:.87rem;}
+.csub{font-size:.69rem;color:var(--muted);margin-top:1px;}
+.cbody{padding:14px;}
+.mbadge{display:inline-block;font-size:.66rem;font-weight:700;padding:3px 10px;border-radius:12px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;}
+.mname{font-weight:700;font-size:.92rem;margin-bottom:6px;}
+.mcal{font-size:.71rem;color:var(--muted);font-weight:600;}
+.ings{list-style:none;margin:6px 0 10px;}
+.ings li{display:flex;gap:6px;padding:5px 0;border-bottom:1px dashed #f0f0f0;font-size:.79rem;}
+.ings li:last-child{border:none;}
+.qty{font-weight:700;color:var(--orange);min-width:65px;flex-shrink:0;}
+.steps{margin-top:4px;}
+.step{display:flex;gap:8px;margin-bottom:7px;font-size:.79rem;line-height:1.5;}
+.snum{width:20px;height:20px;border-radius:50%;background:var(--green);color:#fff;font-size:.67rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.snackbox{background:var(--gp);border-radius:10px;padding:10px 12px;font-size:.79rem;margin:8px 0;}
+.snackbox strong{color:var(--green);}
+.divid{border:none;border-top:2px dashed var(--gp);margin:12px 0;}
+.tipbox{background:#fff9f0;border-left:4px solid var(--gold);border-radius:0 9px 9px 0;padding:10px 12px;font-size:.77rem;color:#5c4a1e;margin-top:10px;line-height:1.7;}
+.wbox{background:linear-gradient(135deg,#1e3a5f,#2d6a8f);border-radius:14px;padding:14px;color:#fff;margin-bottom:12px;}
+.wbox h3{font-weight:700;font-size:.9rem;margin-bottom:8px;}
+.witem{display:flex;align-items:flex-start;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.79rem;}
+.witem:last-of-type{border:none;}
+.wdot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px;}
+.wlink{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:5px 14px;color:#fff;text-decoration:none;font-size:.73rem;font-weight:600;margin-top:10px;}
+.navrow{display:flex;gap:10px;margin-top:12px;padding-bottom:24px;}
+.navbtn{flex:1;padding:11px;border-radius:12px;border:2px solid var(--green);background:#fff;color:var(--green);font-weight:700;font-size:.81rem;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.navbtn:disabled{opacity:.35;cursor:not-allowed;border-color:var(--border);color:var(--muted);}
+.wrow{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;}
+.wg{font-size:1.35rem;cursor:pointer;user-select:none;}
+.wcnt{font-size:.73rem;color:var(--muted);margin-top:4px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>🌿 Meal Plan & Workout</h1>
+  <p>Program Turun Berat Badan — Mei hingga Desember 2026</p>
+  <div class="badges">
+    <span class="badge">👩 155 cm · 98 kg</span>
+    <span class="badge">🎯 Target –20 s/d –50 kg</span>
+    <span class="badge">⏱️ 8 Bulan</span>
+  </div>
+</header>
+<div class="stats">
+  <div class="stat"><div class="stat-num">8</div><div class="stat-lbl">Bulan</div></div>
+  <div class="stat"><div class="stat-num">1.200–1.400</div><div class="stat-lbl">Kkal/Hari</div></div>
+  <div class="stat"><div class="stat-num">3–4×</div><div class="stat-lbl">Workout/Minggu</div></div>
+  <div class="stat"><div class="stat-num">2L+</div><div class="stat-lbl">Air/Hari</div></div>
+</div>
+<div class="phase-wrap"><div class="pscroll" id="PN"></div></div>
+<div class="day-wrap"><div class="dlbl">Pilih Hari:</div><div class="dscroll" id="DN"></div></div>
+<div class="content" id="CT"></div>
+
+<script>
+var PH=[
+  {id:'mei',label:'Mei',month:5,days:31,phase:1},
+  {id:'jun',label:'Juni',month:6,days:30,phase:1},
+  {id:'jul',label:'Juli',month:7,days:31,phase:2},
+  {id:'agu',label:'Agustus',month:8,days:31,phase:2},
+  {id:'sep',label:'September',month:9,days:30,phase:3},
+  {id:'okt',label:'Oktober',month:10,days:31,phase:3},
+  {id:'nov',label:'November',month:11,days:30,phase:4},
+  {id:'des',label:'Desember',month:12,days:31,phase:4}
+];
+var PC={1:'#2d6a4f',2:'#c0392b',3:'#7b5ea7',4:'#1e3a5f'};
+var PD={
+  1:'Fase Adaptasi — 1.300–1.400 kkal/hari. Workout ringan 2–3× seminggu. Fokus konsistensi!',
+  2:'Fase Pembakaran — 1.200–1.300 kkal/hari. Workout 3× seminggu + treadmill lebih lama.',
+  3:'Fase Penguatan — 1.200 kkal/hari. Workout 3–4× seminggu. Perubahan mulai terlihat nyata!',
+  4:'Fase Finishing — 1.200 kkal/hari. Workout 3–4×. Finishing strong menuju target Desember!'
+};
+var MN=['','Jan','Feb','Mar','Apr','Mei','Juni','Juli','Agust','Sept','Okt','Nov','Des'];
+var MNF=['','Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+var DN=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+var SD={5:5,6:1,7:3,8:6,9:2,10:4,11:0,12:2};
+
+// 7 pola makan fase 1 (indeks = hari 0=Min..6=Sab)
+var M1=[
+{sar:{n:'Telur Rebus + Pokchoy Kukus',i:'🥚',c:220,b:[{q:'2 butir',n:'Telur ayam'},{q:'3 tangkai besar (±150g)',n:'Pokchoy'},{q:'Sedikit',n:'Garam & merica'}],s:['Kukus pokchoy 7 menit sampai layu, taburi sedikit garam.','Rebus telur 12 menit sampai matang penuh, kupas.','Sajikan bersama, taburi merica.']},
+snk:{n:'Ubi Ungu Kukus',i:'🍠',b:[{q:'1 buah kecil (±100g)',n:'Ubi ungu'}],s:['Kukus ubi ungu utuh 25–30 menit sampai lunak. Makan hangat!']},
+sia:{n:'Tempe Kukus + Wortel + ½ Centong Nasi Merah',i:'🍚',c:420,b:[{q:'5 potong sedang (100g)',n:'Tempe'},{q:'1 buah sedang (±100g)',n:'Wortel'},{q:'½ centong (75g matang)',n:'Nasi merah'},{q:'Sedikit',n:'Garam'}],s:['Potong wortel bulat tebal, kukus 15 menit.','Iris tempe ±1 cm, kukus 10 menit + sedikit garam.','Sajikan dengan ½ centong nasi merah.']},
+mal:{n:'Tumis Kangkung + Udang',i:'🥬',c:310,b:[{q:'1 ikat kecil (±200g)',n:'Kangkung'},{q:'8–10 ekor sedang',n:'Udang'},{q:'2 siung',n:'Bawang putih'},{q:'1 sdm',n:'Minyak kelapa'},{q:'Sedikit',n:'Garam'}],s:['Panaskan minyak, tumis bawang putih cincang 1 menit.','Masukkan udang, tumis 2–3 menit sampai berubah warna.','Masukkan kangkung, aduk cepat 2–3 menit, taburi garam. Angkat segera!']}},
+
+{sar:{n:'Tahu Kukus + Buncis Rebus',i:'🫛',c:200,b:[{q:'2 potong sedang (±150g)',n:'Tahu putih'},{q:'15 buah (±100g)',n:'Buncis'},{q:'Sedikit',n:'Garam & merica'}],s:['Kukus tahu 8 menit, taburi garam & merica.','Rebus buncis dalam air mendidih 5 menit, tiriskan.','Sajikan hangat.']},
+snk:{n:'Wortel Mentah Segar',i:'🥕',b:[{q:'1 buah sedang',n:'Wortel segar'}],s:['Cuci bersih, potong stik, makan langsung. Renyah & kenyang!']},
+sia:{n:'Udang Rebus + Ubi Orange Kukus + Pokchoy',i:'🦐',c:400,b:[{q:'10–12 ekor',n:'Udang'},{q:'1 buah sedang (±150g)',n:'Ubi orange'},{q:'3 tangkai (±150g)',n:'Pokchoy'},{q:'Sedikit',n:'Garam & jeruk nipis'}],s:['Kukus ubi orange 30 menit sampai empuk.','Rebus udang air mendidih + garam 5 menit.','Kukus pokchoy 7 menit.','Peras sedikit jeruk nipis di atas udang.']},
+mal:{n:'Tempe Goreng Sedikit Minyak + Kangkung Tumis',i:'🍳',c:350,b:[{q:'5 potong (100g)',n:'Tempe'},{q:'1 ikat kecil (±200g)',n:'Kangkung'},{q:'2 siung',n:'Bawang putih'},{q:'1 sdm',n:'Minyak kelapa'},{q:'Sedikit',n:'Garam'}],s:['Iris tempe tipis, goreng wajan anti lengket 1 sdm minyak 3 menit tiap sisi.','Tumis bawang putih, masukkan kangkung, aduk 3 menit, taburi garam.']}},
+
+{sar:{n:'Orak-Arik Telur Pokchoy',i:'🍳',c:230,b:[{q:'2 butir',n:'Telur'},{q:'2 tangkai (±100g)',n:'Pokchoy'},{q:'½ sdm',n:'Minyak kelapa'},{q:'Sedikit',n:'Garam'}],s:['Panaskan wajan + minyak, tumis pokchoy 2 menit.','Masukkan telur kocok, aduk acak-acak 4 menit sampai matang.']},
+snk:{n:'Ubi Orange Kukus Kecil',i:'🍠',b:[{q:'1 buah kecil (±100g)',n:'Ubi orange'}],s:['Kukus 25–30 menit sampai lunak.']},
+sia:{n:'Tumis Buncis + Udang + Nasi Merah',i:'🍚',c:430,b:[{q:'20 buah (±150g)',n:'Buncis'},{q:'8 ekor',n:'Udang'},{q:'½ centong (75g matang)',n:'Nasi merah'},{q:'1 sdm',n:'Minyak kelapa'},{q:'2 siung',n:'Bawang putih'},{q:'Sedikit',n:'Garam'}],s:['Potong buncis serong.','Tumis bawang putih, masukkan udang 2 menit.','Masukkan buncis, tumis 5–7 menit, taburi garam.','Sajikan dengan nasi merah.']},
+mal:{n:'Tahu Tumis Wortel',i:'🥕',c:290,b:[{q:'3 potong sedang (±200g)',n:'Tahu'},{q:'1 buah sedang',n:'Wortel'},{q:'1 sdm',n:'Minyak kelapa'},{q:'2 siung',n:'Bawang putih'},{q:'Sedikit',n:'Kecap asin & garam'}],s:['Iris tahu kotak, potong wortel korek api.','Tumis bawang putih, masukkan tahu + wortel.','Tumis 8 menit, taburi sedikit kecap asin.']}},
+
+{sar:{n:'Telur Rebus 2 + Kangkung Rebus',i:'🥚',c:210,b:[{q:'2 butir',n:'Telur'},{q:'½ ikat (±150g)',n:'Kangkung'},{q:'Sedikit',n:'Garam'}],s:['Rebus telur 12 menit, kupas.','Rebus kangkung 3 menit, tiriskan, taburi garam.']},
+snk:{n:'Tempe Kukus Kecil',i:'🥗',b:[{q:'2 potong kecil (±50g)',n:'Tempe'}],s:['Kukus 10 menit, taburi sedikit garam.']},
+sia:{n:'Sup Udang Pokchoy',i:'🍲',c:380,b:[{q:'10 ekor',n:'Udang'},{q:'4 tangkai (±200g)',n:'Pokchoy'},{q:'2 siung',n:'Bawang putih'},{q:'500 ml',n:'Air'},{q:'Sedikit',n:'Garam & merica'},{q:'½ centong (opsional)',n:'Nasi merah'}],s:['Didihkan air + bawang putih geprek.','Masukkan udang, rebus 5 menit.','Masukkan pokchoy, masak 3 menit.','Bumbui garam + merica, sajikan.']},
+mal:{n:'Tumis Buncis Tahu',i:'🥗',c:300,b:[{q:'20 buah (±150g)',n:'Buncis'},{q:'2 potong sedang',n:'Tahu'},{q:'1 sdm',n:'Minyak kelapa'},{q:'2 siung',n:'Bawang putih'},{q:'Sedikit',n:'Garam & kecap manis setetes'}],s:['Potong buncis serong, tahu kotak kecil.','Tumis bawang putih, masukkan tahu 3 menit.','Masukkan buncis, tumis 5 menit, bumbui.']}},
+
+{sar:{n:'Pokchoy + Tahu Kukus',i:'🥦',c:200,b:[{q:'3 tangkai (±150g)',n:'Pokchoy'},{q:'2 potong sedang',n:'Tahu'},{q:'Sedikit',n:'Kecap asin'}],s:['Kukus pokchoy dan tahu bersamaan 8–10 menit.','Sajikan dengan sedikit kecap asin.']},
+snk:{n:'Telur Rebus 1',i:'🥚',b:[{q:'1 butir',n:'Telur'}],s:['Rebus 12 menit, kupas, taburi sedikit garam.']},
+sia:{n:'Nasi Merah + Tempe Kukus + Wortel',i:'🍚',c:420,b:[{q:'½ centong (75g matang)',n:'Nasi merah'},{q:'5 potong (100g)',n:'Tempe'},{q:'1 buah',n:'Wortel'},{q:'Sedikit',n:'Garam'}],s:['Kukus tempe 10 menit.','Rebus atau kukus wortel 15 menit.','Sajikan bersama nasi merah.']},
+mal:{n:'Kangkung Tumis Udang',i:'🦐',c:310,b:[{q:'1 ikat kecil (±200g)',n:'Kangkung'},{q:'8 ekor',n:'Udang'},{q:'1 sdm',n:'Minyak kelapa'},{q:'2 siung',n:'Bawang putih'},{q:'Sedikit',n:'Garam'}],s:['Tumis bawang putih, masukkan udang 3 menit.','Masukkan kangkung, tumis 3 menit cepat.','Bumbui garam, sajikan.']}},
+
+{sar:{n:'Ubi Ungu Kukus + Telur Rebus',i:'🥚',c:270,b:[{q:'1 buah kecil (±100g)',n:'Ubi ungu'},{q:'2 butir',n:'Telur'},{q:'Sedikit',n:'Garam'}],s:['Kukus ubi 25 menit bersamaan merebus telur 12 menit.','Sajikan bersama, taburi sedikit garam.']},
+snk:{n:'Ubi Orange Kecil Kukus',i:'🍠',b:[{q:'1 buah kecil (±100g)',n:'Ubi orange'}],s:['Kukus 25 menit.']},
+sia:{n:'Sup Sayuran + Tempe',i:'🍲',c:400,b:[{q:'5 potong (100g)',n:'Tempe'},{q:'1 buah',n:'Wortel'},{q:'15 buah (±100g)',n:'Buncis'},{q:'2 siung',n:'Bawang putih'},{q:'500 ml',n:'Air'},{q:'Sedikit',n:'Garam & merica'}],s:['Didihkan air + bawang putih + wortel potong 10 menit.','Masukkan tempe kotak + buncis, masak 8 menit lagi.','Bumbui garam merica.']},
+mal:{n:'Tahu + Pokchoy Kukus',i:'🥦',c:270,b:[{q:'3 potong sedang',n:'Tahu'},{q:'4 tangkai (±200g)',n:'Pokchoy'},{q:'Sedikit',n:'Kecap asin'}],s:['Kukus tahu dan pokchoy bersamaan 10 menit.','Sajikan dengan sedikit kecap asin.']}},
+
+{sar:{n:'Orak-Arik Telur + Kangkung',i:'🍳',c:240,b:[{q:'2 butir',n:'Telur'},{q:'±100g',n:'Kangkung'},{q:'½ sdm',n:'Minyak kelapa'},{q:'Sedikit',n:'Garam'}],s:['Tumis kangkung 2 menit.','Masukkan telur kocok, aduk hingga matang ±4 menit.']},
+snk:{n:'Tempe Kukus',i:'🥗',b:[{q:'2 potong kecil (±50g)',n:'Tempe'}],s:['Kukus 10 menit.']},
+sia:{n:'Udang Bakar Wajan + Buncis + Ubi',i:'🦐',c:430,b:[{q:'12 ekor (belah punggung)',n:'Udang'},{q:'20 buah (±150g)',n:'Buncis'},{q:'1 buah kecil (±100g)',n:'Ubi orange'},{q:'Sedikit',n:'Garam & merica'}],s:['Bakar udang di wajan anti lengket TANPA minyak 3 menit tiap sisi.','Rebus buncis 5 menit, kukus ubi 25 menit.','Taburi garam merica di udang.']},
+mal:{n:'Kangkung + Tahu Tumis',i:'🥬',c:300,b:[{q:'½ ikat (±150g)',n:'Kangkung'},{q:'2 potong sedang',n:'Tahu'},{q:'1 sdm',n:'Minyak kelapa'},{q:'2 siung',n:'Bawang putih'},{q:'Sedikit',n:'Garam'}],s:['Tumis bawang putih, masukkan tahu kotak 3 menit.','Masukkan kangkung, tumis 3 menit.','Taburi garam.']}}
+];
+
+// Fase 2–4 (kurangi karbo)
+var M2=[
+{sar:{n:'Telur Rebus + Buncis Rebus',i:'🥚',c:200,b:[{q:'2 butir',n:'Telur'},{q:'15 buah (±100g)',n:'Buncis'},{q:'Sedikit',n:'Garam'}],s:['Rebus telur 12 menit, kupas.','Rebus buncis 5 menit air mendidih, tiriskan.','Taburi garam secukupnya.']},
+snk:{n:'Ubi Orange Kukus Kecil',i:'🍠',b:[{q:'1 buah kecil (±100g)',n:'Ubi orange'}],s:['Kukus 25–30 menit.']},
+sia:{n:'Udang Tumis Kangkung (Tanpa Nasi)',i:'🦐',c:350,b:[{q:'12 ekor sedang',n:'Udang'},{q:'1 ikat kecil (±200g)',n:'Kangkung'},{q:'2 siung',n:'Bawang putih'},{q:'1 sdm',n:'Minyak kelapa'},{q:'Sedikit',n:'Garam & kecap asin'}],s:['Tumis bawang putih harum.','Masukkan udang, masak 3 menit.','Masukkan kangkung, aduk cepat 3 menit.','Bumbui garam + kecap asin sedikit.']},
+mal:{n:'Tempe Kukus + Wortel + Pokchoy',i:'🥦',c:280,b:[{q:'5 potong (100g)',n:'Tempe'},{q:'1 buah',n:'Wortel'},{q:'3 tangkai (±150g)',n:'Pokchoy'},{q:'Sedikit',n:'Garam'}],s:['Kukus semua bersamaan: tempe, wortel potong, pokchoy ±15 menit.','Taburi sedikit garam.']}},
+
+{sar:{n:'Sup Telur Pokchoy',i:'🍲',c:210,b:[{q:'2 butir',n:'Telur'},{q:'4 tangkai (±200g)',n:'Pokchoy'},{q:'300 ml',n:'Air'},{q:'Sedikit',n:'Garam & merica'}],s:['Didihkan air, masukkan pokchoy 3 menit.','Pecahkan telur langsung ke sup, aduk pelan.','Bumbui garam merica.']},
+snk:{n:'Wortel Segar Mentah',i:'🥕',b:[{q:'1 buah sedang',n:'Wortel segar'}],s:['Cuci bersih, makan mentah. Kenyang & rendah kalori!']},
+sia:{n:'Tahu + Buncis Tumis + Ubi',i:'🍠',c:380,b:[{q:'3 potong sedang',n:'Tahu'},{q:'20 buah (±150g)',n:'Buncis'},{q:'1 buah kecil',n:'Ubi ungu'},{q:'1 sdm',n:'Minyak kelapa'},{q:'2 siung',n:'Bawang putih'},{q:'Sedikit',n:'Garam'}],s:['Kukus ubi 25 menit.','Tumis bawang putih, masukkan tahu kotak 3 menit.','Masukkan buncis, tumis 5 menit.','Sajikan dengan ubi.']},
+mal:{n:'Udang Rebus + Kangkung Tumis',i:'🦐',c:290,b:[{q:'10 ekor',n:'Udang'},{q:'1 ikat kecil',n:'Kangkung'},{q:'Sedikit',n:'Garam & jeruk nipis'}],s:['Rebus udang 5 menit dalam air garam.','Tumis kangkung sedikit minyak + bawang putih 3 menit.','Peras jeruk nipis di atas udang.']}},
+
+{sar:{n:'Orak-Arik Telur Wortel',i:'🍳',c:220,b:[{q:'2 butir',n:'Telur'},{q:'½ buah (parut kasar)',n:'Wortel'},{q:'½ sdm',n:'Minyak kelapa'},{q:'Sedikit',n:'Garam'}],s:['Kocok telur + garam + wortel parut.','Tuang ke wajan, aduk hingga matang ±5 menit.']},
+snk:{n:'Telur Rebus 1',i:'🥚',b:[{q:'1 butir',n:'Telur'}],s:['Rebus 12 menit, kupas.']},
+sia:{n:'Tempe Goreng + Sayuran Kukus',i:'🥗',c:380,b:[{q:'5 potong (100g)',n:'Tempe'},{q:'3 tangkai (±150g)',n:'Pokchoy'},{q:'15 buah (±100g)',n:'Buncis'},{q:'1 sdm',n:'Minyak kelapa'},{q:'Sedikit',n:'Garam'}],s:['Iris tempe tipis, goreng wajan anti lengket 1 sdm minyak, 3 menit tiap sisi.','Kukus pokchoy + buncis 10 menit.','Sajikan bersama.']},
+mal:{n:'Sup Udang Sayuran',i:'🍲',c:280,b:[{q:'10 ekor',n:'Udang'},{q:'1 buah',n:'Wortel'},{q:'3 tangkai',n:'Pokchoy'},{q:'400 ml',n:'Air'},{q:'Sedikit',n:'Garam & merica'}],s:['Rebus air + wortel potong 10 menit.','Masukkan udang + pokchoy, rebus 5 menit.','Bumbui garam merica.']}},
+
+{sar:{n:'Tahu Kukus + Kangkung Rebus',i:'🥦',c:190,b:[{q:'2 potong sedang',n:'Tahu'},{q:'½ ikat (±150g)',n:'Kangkung'},{q:'Sedikit',n:'Kecap asin'}],s:['Kukus tahu 8 menit.','Rebus kangkung 3 menit.','Sajikan dengan sedikit kecap asin.']},
+snk:{n:'Ubi Ungu Kukus Kecil',i:'🍠',b:[{q:'1 buah kecil (±80g)',n:'Ubi ungu'}],s:['Kukus 20–25 menit.']},
+sia:{n:'Udang + Ubi + Buncis Kukus',i:'🦐',c:390,b:[{q:'12 ekor',n:'Udang'},{q:'1 buah sedang (±150g)',n:'Ubi orange'},{q:'20 buah (±150g)',n:'Buncis'},{q:'Sedikit',n:'Garam'}],s:['Kukus ubi 25–30 menit.','Rebus udang 5 menit dalam air garam.','Kukus buncis 10 menit.','Taburi garam, sajikan.']},
+mal:{n:'Tumis Tempe + Pokchoy',i:'🥗',c:290,b:[{q:'5 potong (100g)',n:'Tempe'},{q:'4 tangkai (±200g)',n:'Pokchoy'},{q:'1 sdm',n:'Minyak kelapa'},{q:'2 siung',n:'Bawang putih'},{q:'Sedikit',n:'Garam & kecap asin'}],s:['Tumis bawang putih, masukkan tempe kotak 5 menit.','Masukkan pokchoy, tumis 3 menit.','Bumbui garam dan kecap asin sedikit.']}},
+
+{sar:{n:'Telur Mata Sapi + Pokchoy Kukus',i:'🥚',c:220,b:[{q:'2 butir',n:'Telur'},{q:'3 tangkai (±150g)',n:'Pokchoy'},{q:'Sedikit',n:'Garam'}],s:['Goreng telur mata sapi TANPA minyak di wajan anti lengket.','Kukus pokchoy 7 menit.','Taburi garam.']},
+snk:{n:'Wortel + Tempe Kukus',i:'🥕',b:[{q:'½ buah',n:'Wortel'},{q:'2 potong kecil (±30g)',n:'Tempe'}],s:['Makan wortel mentah, kukus tempe 10 menit.']},
+sia:{n:'Tahu Tempe Kukus + Wortel Buncis',i:'🥗',c:400,b:[{q:'2 potong sedang',n:'Tahu'},{q:'3 potong (±50g)',n:'Tempe'},{q:'1 buah',n:'Wortel'},{q:'15 buah',n:'Buncis'},{q:'Sedikit',n:'Garam & kecap asin'}],s:['Kukus semua bahan bersamaan 15 menit.','Taburi garam, sajikan dengan kecap asin sedikit.']},
+mal:{n:'Kangkung Udang Tumis',i:'🦐',c:300,b:[{q:'1 ikat kecil (±200g)',n:'Kangkung'},{q:'8 ekor',n:'Udang'},{q:'1 sdm',n:'Minyak kelapa'},{q:'2 siung',n:'Bawang putih'},{q:'Sedikit',n:'Garam'}],s:['Tumis bawang putih, masukkan udang 3 menit.','Masukkan kangkung, tumis 3 menit cepat.','Bumbui garam.']}},
+
+{sar:{n:'Sup Telur Wortel',i:'🍲',c:210,b:[{q:'2 butir',n:'Telur'},{q:'1 buah',n:'Wortel'},{q:'400 ml',n:'Air'},{q:'2 siung',n:'Bawang putih'},{q:'Sedikit',n:'Garam'}],s:['Rebus wortel potong + bawang putih 10 menit.','Pecahkan telur ke sup, aduk pelan.','Bumbui garam.']},
+snk:{n:'Ubi Orange Kukus Kecil',i:'🍠',b:[{q:'1 buah kecil (±100g)',n:'Ubi orange'}],s:['Kukus 25 menit.']},
+sia:{n:'Tempe + Buncis + Ubi Kukus',i:'🍠',c:380,b:[{q:'5 potong (100g)',n:'Tempe'},{q:'20 buah (±150g)',n:'Buncis'},{q:'1 buah kecil',n:'Ubi orange'},{q:'Sedikit',n:'Garam'}],s:['Kukus semua bersamaan ±25 menit (ubi paling lama).','Tempe + buncis sudah matang di 15 menit.']},
+mal:{n:'Pokchoy + Tahu Kukus',i:'🥦',c:250,b:[{q:'4 tangkai (±200g)',n:'Pokchoy'},{q:'3 potong sedang',n:'Tahu'},{q:'Sedikit',n:'Kecap asin'}],s:['Kukus tahu + pokchoy 10 menit.','Sajikan dengan kecap asin sedikit.']}},
+
+{sar:{n:'Orak-Arik Telur Kangkung',i:'🍳',c:230,b:[{q:'2 butir',n:'Telur'},{q:'±100g',n:'Kangkung'},{q:'½ sdm',n:'Minyak kelapa'},{q:'Sedikit',n:'Garam'}],s:['Tumis kangkung sebentar 2 menit.','Masukkan telur kocok, aduk hingga matang ±4 menit.']},
+snk:{n:'Tempe Kukus',i:'🥗',b:[{q:'2 potong kecil (±50g)',n:'Tempe'}],s:['Kukus 10 menit.']},
+sia:{n:'Udang + Pokchoy Tumis',i:'🦐',c:370,b:[{q:'12 ekor',n:'Udang'},{q:'4 tangkai (±200g)',n:'Pokchoy'},{q:'2 siung',n:'Bawang putih'},{q:'1 sdm',n:'Minyak kelapa'},{q:'Sedikit',n:'Garam'}],s:['Tumis bawang putih, masukkan udang 3 menit.','Masukkan pokchoy, tumis 3 menit.','Bumbui garam.']},
+mal:{n:'Tempe Kukus + Buncis Rebus',i:'🥗',c:270,b:[{q:'5 potong (100g)',n:'Tempe'},{q:'20 buah (±150g)',n:'Buncis'},{q:'Sedikit',n:'Garam & kecap asin'}],s:['Kukus tempe 10 menit.','Rebus buncis 5 menit.','Sajikan dengan kecap asin sedikit.']}}
+];
+
+// Workout: null = istirahat
+var WK={
+ 0:null,3:null,6:null,
+ 1:{p1:{t:'Cardio + Tubuh Bawah — Pemula',w:['🏃 Treadmill 15 menit @ 3–4 km/jam','🦵 Squat tanpa beban: 3 set × 10 rep','💪 Wall push-up: 3 set × 8 rep','🧘 Peregangan seluruh tubuh 10 menit'],lk:'https://www.youtube.com/results?search_query=workout+pemula+di+rumah+tanpa+alat+indonesia',lb:'🎥 Video Workout Pemula'},
+   p2:{t:'Cardio + Tubuh Bawah — Sedang',w:['🏃 Treadmill 20 menit @ 4–5 km/jam','🦵 Squat: 3 set × 15 rep','🦵 Lunge: 3 set × 10 tiap kaki','💪 Push-up lutut: 3 set × 10','⏱️ Plank: 3 × 20 detik'],lk:'https://www.youtube.com/results?search_query=fat+burning+workout+pemula+indonesia+20+menit',lb:'🎥 Video Fat Burning 20 Menit'},
+   p3:{t:'Cardio + Full Body — Aktif',w:['🏃 Treadmill 25 menit @ 5 km/jam','🦵 Squat jump: 3 set × 12','💪 Push-up normal: 3 set × 10','⛰️ Mountain climber: 3 × 20 detik','⏱️ Plank: 3 × 30 detik'],lk:'https://www.youtube.com/results?search_query=full+body+workout+rumah+tanpa+alat+30+menit+indonesia',lb:'🎥 Video Full Body 30 Menit'},
+   p4:{t:'Cardio + Full Body — Kuat',w:['🏃 Treadmill 30 menit @ 5–6 km/jam','🦵 Jump squat: 3 × 15','💪 Push-up: 3 × 15','⛰️ Burpee ringan: 3 × 10','⏱️ Plank: 3 × 40 detik'],lk:'https://www.youtube.com/results?search_query=hiit+workout+30+menit+di+rumah+tanpa+alat',lb:'🎥 Video HIIT 30 Menit'}},
+ 2:{p1:{t:'Core + Peregangan',w:['🏃 Treadmill 15 menit santai','💪 Crunches: 3 set × 10','🦵 Leg raise: 3 set × 8','🧘 Stretching seluruh tubuh 15 menit'],lk:'https://www.youtube.com/results?search_query=core+workout+pemula+di+rumah+tanpa+alat+indonesia',lb:'🎥 Video Core Pemula'},
+   p2:{t:'Core + Kardio',w:['🏃 Treadmill 20 menit','💪 Bicycle crunch: 3 × 15','🍑 Glute bridge: 3 × 15','⏱️ Plank: 3 × 25 detik'],lk:'https://www.youtube.com/results?search_query=core+workout+pemula+20+menit+indonesia',lb:'🎥 Video Core 20 Menit'},
+   p3:{t:'Core + Kardio Sedang',w:['🏃 Treadmill 25 menit','💪 V-up: 3 × 12','🍑 Glute bridge: 3 × 20','⏱️ Side plank: 3 × 25 detik tiap sisi'],lk:'https://www.youtube.com/results?search_query=core+strength+workout+rumah+30+menit',lb:'🎥 Video Core Strength'},
+   p4:{t:'Core + HIIT',w:['🏃 Treadmill 30 menit','💪 V-up: 3 × 15','🍑 Donkey kick: 3 × 20 tiap sisi','⏱️ Plank shoulder tap: 3 × 20'],lk:'https://www.youtube.com/results?search_query=hiit+core+workout+rumah+tanpa+alat',lb:'🎥 Video HIIT Core'}},
+ 4:{p1:{t:'Upper Body Ringan',w:['🏃 Treadmill 15 menit','💪 Wall push-up: 3 × 10','🔄 Arm circle besar: 3 × 20','🧘 Shoulder stretch 10 menit'],lk:'https://www.youtube.com/results?search_query=upper+body+workout+pemula+tanpa+alat+indonesia',lb:'🎥 Video Upper Body Pemula'},
+   p2:{t:'Upper Body Sedang',w:['🏃 Treadmill 20 menit','💪 Push-up lutut: 3 × 12','🪑 Tricep dip pakai kursi: 3 × 10','🦸 Superman hold: 3 × 12'],lk:'https://www.youtube.com/results?search_query=upper+body+workout+pemula+20+menit+rumah',lb:'🎥 Video Upper Body 20 Menit'},
+   p3:{t:'Upper Body + Back',w:['🏃 Treadmill 25 menit','💪 Push-up normal: 3 × 12','🪑 Tricep dip: 3 × 15','🦸 Superman: 3 × 15'],lk:'https://www.youtube.com/results?search_query=upper+body+back+workout+rumah+30+menit',lb:'🎥 Video Upper Body + Back'},
+   p4:{t:'Upper Body Kuat',w:['🏃 Treadmill 30 menit','💪 Push-up: 3 × 15','🪑 Tricep dip: 3 × 15','🦸 Superman hold: 3 × 15','💪 Pike push-up: 3 × 10'],lk:'https://www.youtube.com/results?search_query=upper+body+strength+workout+rumah+tanpa+alat',lb:'🎥 Video Upper Body Strength'}},
+ 5:{p1:{t:'Full Body + Treadmill Lebih Lama',w:['🏃 Treadmill 20 menit @ 3–4 km/jam','🦵 Squat: 3 × 12','💪 Push-up lutut: 3 × 8','🕺 Standing side crunch: 3 × 10 tiap sisi'],lk:'https://www.youtube.com/results?search_query=full+body+workout+pemula+20+menit+indonesia+di+rumah',lb:'🎥 Video Full Body Pemula'},
+   p2:{t:'Full Body Sedang',w:['🏃 Treadmill 25 menit @ 4–5 km/jam','⚡ Burpee ringan: 3 × 8','🦵 Jump squat: 3 × 10','💪 Push-up: 3 × 12'],lk:'https://www.youtube.com/results?search_query=hiit+ringan+pemula+25+menit+indonesia',lb:'🎥 Video HIIT Ringan'},
+   p3:{t:'Full Body + HIIT',w:['🏃 Treadmill 30 menit @ 5 km/jam','⚡ Burpee: 3 × 12','🦵 Jump squat: 3 × 15','💪 Push-up: 3 × 15'],lk:'https://www.youtube.com/results?search_query=hiit+workout+30+menit+di+rumah+tanpa+alat',lb:'🎥 Video HIIT 30 Menit'},
+   p4:{t:'Full Body Finisher',w:['🏃 Treadmill 35 menit @ 5–6 km/jam','⚡ Burpee: 3 × 15','🦵 Jump lunge: 3 × 12 tiap kaki','💪 Push-up: 3 × 15','⏱️ Plank: 3 × 45 detik'],lk:'https://www.youtube.com/results?search_query=full+body+hiit+finisher+workout+rumah',lb:'🎥 Video Full Body Finisher'}}
+};
+
+var TIPS={
+ 1:'🌱 Konsistensi lebih penting dari intensitas! Jangan paksa tubuh terlalu keras.<br>🍽️ Kunyah makanan pelan-pelan minimal 20× per suap — bikin kenyang lebih lama.<br>😴 Tidur 7–8 jam sangat penting untuk metabolisme dan kontrol nafsu makan.<br>📱 Foto makananmu setiap hari sebagai catatan progres!',
+ 2:'🔥 Tubuhmu sudah mulai terbiasa — jaga konsistensi defisit kalori!<br>💪 Workout mulai terasa ringan? Itu tanda progres. Tingkatkan sedikit-sedikit.<br>🧘 Kelola stres — kortisol tinggi = susah turun berat badan.<br>💧 Sering merasa lapar padahal baru makan? Coba minum air dulu!',
+ 3:'⚡ Kamu sudah luar biasa! Tubuh mulai terlihat berubah nyata.<br>📏 Ukur lingkar pinggang & pinggul tiap 2 minggu — bukan cuma timbangan.<br>🏃 Treadmill bisa sedikit dimiringkan (incline 2–3%) untuk intensitas lebih.<br>🎯 Ada plateau? Normal! Tetap konsisten dan percaya prosesnya.',
+ 4:'🏆 Selesaikan kuat! Kamu sudah capai lebih dari yang kamu bayangkan.<br>🌟 Rayakan setiap 5 kg yang turun — apresiasi dirimu sendiri!<br>🔄 Mulai pikirkan maintenance plan agar tidak yo-yo setelah Desember.<br>📏 Timbang berat badan 1× seminggu saja, pagi setelah buang air kecil.'
+};
+
+// ── STATE ──
+var cP=0, cD=1, wC=0;
+
+function dow(pi,d){return (SD[PH[pi].month]+d-1)%7;}
+function getMeal(pi,d){var dw=dow(pi,d);return PH[pi].phase===1?M1[dw]:M2[dw];}
+function getWk(pi,d){var dw=dow(pi,d);var ph=PH[pi].phase;var wk=WK[dw];if(!wk)return null;return wk['p'+ph]||wk.p1;}
+
+function mc(m,lbl,col){
+  var b=m.b.map(function(x){return '<li><span class="qty">'+x.q+'</span><span>'+x.n+'</span></li>';}).join('');
+  var s=m.s.map(function(x,i){return '<div class="step"><div class="snum">'+(i+1)+'</div><div>'+x+'</div></div>';}).join('');
+  return '<span class="mbadge" style="background:'+col+'22;color:'+col+'">'+lbl+'</span>'+
+    '<div class="mname">'+m.i+' '+m.n+(m.c?' <span class="mcal">±'+m.c+' kkal</span>':'')+'</div>'+
+    '<ul class="ings">'+b+'</ul><div class="steps">'+s+'</div>';
+}
+
+function draw(){
+  // Phase nav
+  var ph='';
+  for(var i=0;i<PH.length;i++){
+    ph+='<button class="pbtn'+(i===cP?' act':'')+'" data-i="'+i+'">'+PH[i].label+' <small style="opacity:.7">F'+PH[i].phase+'</small></button>';
+  }
+  document.getElementById('PN').innerHTML=ph;
+
+  // Day nav
+  var dn='';
+  for(var d=1;d<=PH[cP].days;d++){
+    dn+='<button class="dbtn'+(d===cD?' act':'')+'" data-d="'+d+'">'+d+'</button>';
+  }
+  document.getElementById('DN').innerHTML=dn;
+
+  // Scroll active day into view
+  var ada=document.querySelector('.dbtn.act');
+  if(ada)ada.scrollIntoView({inline:'center',behavior:'smooth',block:'nearest'});
+
+  // Content
+  var p=PH[cP],ph2=p.phase,dw2=dow(cP,cD),dn2=DN[dw2];
+  var ds=dn2+', '+cD+' '+MNF[p.month]+' 2026';
+  var wk=Math.ceil(cD/7);
+  var meal=getMeal(cP,cD),wout=getWk(cP,cD);
+  var tc=(meal.sar.c||0)+(meal.sia.c||0)+(meal.mal.c||0)+150;
+  var pcol=PC[ph2];
+
+  var snkH='<div class="snackbox"><strong>🕙 Snack Pagi (±Jam 10.00):</strong> '+meal.snk.i+' '+meal.snk.n+'<br>'+
+    '<span>Bahan: '+meal.snk.b.map(function(x){return x.q+' '+x.n;}).join(', ')+'</span><br>'+
+    '<span>'+meal.snk.s[0]+'</span></div>';
+
+  var wkH;
+  if(!wout){
+    wkH='<div class="wbox"><h3>💪 Workout Hari Ini</h3>'+
+      '<div style="font-size:.82rem;opacity:.85">😴 <strong>Hari Istirahat Aktif</strong><br>Lakukan stretching ringan 10 menit atau jalan santai di treadmill 10 menit. Tubuh butuh recovery untuk tumbuh lebih kuat!</div></div>';
+  } else {
+    var wi=wout.w.map(function(x){return '<div class="witem"><div class="wdot"></div><div>'+x+'</div></div>';}).join('');
+    wkH='<div class="wbox"><h3>💪 Workout Hari Ini</h3>'+
+      '<div style="font-size:.77rem;font-weight:600;opacity:.8;margin-bottom:6px">'+wout.t+'</div>'+wi+
+      '<a class="wlink" href="'+wout.lk+'" target="_blank">'+wout.lb+' ↗</a>'+
+      '<div style="font-size:.69rem;opacity:.7;margin-top:8px">💡 Klik untuk cari video di YouTube. Pilih yang sesuai kemampuanmu hari ini.</div></div>';
+  }
+
+  var gH='';for(var g=1;g<=8;g++)gH+='<span class="wg" data-g="'+g+'">'+(g<=wC?'💧':'🥛')+'</span>';
+
+  var pd=cP===0&&cD===1,nd=cP===PH.length-1&&cD===PH[cP].days;
+
+  document.getElementById('CT').innerHTML=
+    '<div class="date-hdr">'+
+      '<div><h2>'+ds+'</h2><div class="dsub">Minggu ke-'+wk+' · Fase '+ph2+' — '+(ph2===1?'Adaptasi':ph2===2?'Pembakaran':ph2===3?'Penguatan':'Finishing')+'</div></div>'+
+      '<div class="ccal"><div class="n">~'+tc+'</div><div class="l">kkal/hari</div></div>'+
+    '</div>'+
+    '<div class="pinfo" style="background:linear-gradient(135deg,'+pcol+'ee,'+pcol+'aa)">'+
+      '<h3>📌 Fase '+ph2+'</h3><p>'+PD[ph2]+'</p></div>'+
+    '<div class="card">'+
+      '<div class="chdr"><div class="cico" style="background:#f0fdf4">🍽️</div><div><div class="ctit">Meal Plan Hari Ini</div><div class="csub">Masak pakai kukusan & wajan — simple!</div></div></div>'+
+      '<div class="cbody">'+mc(meal.sar,'Sarapan','#f59e0b')+'<hr class="divid">'+snkH+mc(meal.sia,'Makan Siang','#10b981')+'<hr class="divid">'+mc(meal.mal,'Makan Malam','#3b82f6')+
+      '<div class="tipbox">💧 <strong>Air minum:</strong> 1 gelas sebelum tiap makan. Total 8 gelas/hari.<br>🕗 <strong>Jadwal:</strong> Sarapan 07.00 · Snack 10.00 · Siang 12.00 · Malam 18.00<br>🚫 <strong>Stop makan</strong> setelah jam 20.00</div></div></div>'+
+    '<div class="card">'+
+      '<div class="chdr"><div class="cico" style="background:#e0f2fe">💧</div><div><div class="ctit">Tracker Air Minum</div><div class="csub">Ketuk gelas untuk tandai sudah minum</div></div></div>'+
+      '<div class="cbody"><div class="wrow">'+gH+'</div><div class="wcnt" id="WC">'+wC+' / 8 gelas '+(wC>=8?'🎉 Target tercapai!':'')+'</div></div></div>'+
+    wkH+
+    '<div class="card">'+
+      '<div class="chdr"><div class="cico" style="background:#fef9ee">💡</div><div><div class="ctit">Tips Hari Ini</div></div></div>'+
+      '<div class="cbody" style="font-size:.81rem;line-height:1.8">'+TIPS[ph2]+'</div></div>'+
+    '<div class="navrow">'+
+      '<button class="navbtn" id="BP"'+(pd?' disabled':'')+'>← Sebelumnya</button>'+
+      '<button class="navbtn" id="BN"'+(nd?' disabled':'')+'>Berikutnya →</button>'+
+    '</div>';
+
+  // Attach events
+  document.getElementById('PN').querySelectorAll('.pbtn').forEach(function(b){
+    b.addEventListener('click',function(){cP=parseInt(this.getAttribute('data-i'));cD=1;wC=0;draw();window.scrollTo(0,0);});
+  });
+  document.getElementById('DN').querySelectorAll('.dbtn').forEach(function(b){
+    b.addEventListener('click',function(){cD=parseInt(this.getAttribute('data-d'));wC=0;draw();window.scrollTo(0,0);});
+  });
+  document.querySelectorAll('.wg').forEach(function(b){
+    b.addEventListener('click',function(){
+      var n=parseInt(this.getAttribute('data-g'));
+      wC=(n<=wC)?n-1:n;
+      document.querySelectorAll('.wg').forEach(function(g,i){g.textContent=(i+1)<=wC?'💧':'🥛';});
+      document.getElementById('WC').textContent=wC+' / 8 gelas '+(wC>=8?'🎉 Target tercapai!':'');
+    });
+  });
+  var bp=document.getElementById('BP'),bn=document.getElementById('BN');
+  if(bp)bp.addEventListener('click',function(){
+    if(cD>1)cD--;else if(cP>0){cP--;cD=PH[cP].days;}
+    wC=0;draw();window.scrollTo(0,0);
+  });
+  if(bn)bn.addEventListener('click',function(){
+    if(cD<PH[cP].days)cD++;else if(cP<PH.length-1){cP++;cD=1;}
+    wC=0;draw();window.scrollTo(0,0);
+  });
+}
+
+draw();
+</script>
+</body>
+</html>
